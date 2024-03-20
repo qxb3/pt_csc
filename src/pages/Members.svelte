@@ -35,7 +35,7 @@
 
   <div class="member">
     <p class="name">Lord Vincent Torio (Sapilot)</p>
-    <p class="quote">- Nag sasawa kasi ako par.</p>
+    <p class="quote">- Pahingi 2nd chance.</p>
   </div>
 </main>
 
