@@ -2,6 +2,7 @@
   import Modal from '../lib/Modal.svelte'
   import { solveFcfs } from '../algos/fcfs.js'
   import { solveSjf } from '../algos/sjf.js'
+  import { solveSrtf } from '../algos/srtf'
 
   let algorithm = 'fcfs'
 
@@ -43,6 +44,7 @@
 
     if (algorithm === 'fcfs') result = solveFcfs(jobs)
     if (algorithm === 'sjf') result = solveSjf(jobs)
+    if (algorithm === 'srtf') result = solveSrtf(jobs)
   }
 </script>
 
