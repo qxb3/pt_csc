@@ -3,6 +3,7 @@
   import { solveFcfs } from '../algos/fcfs.js'
   import { solveSjf } from '../algos/sjf.js'
   import { solveSrtf } from '../algos/srtf'
+  import { solveNpp } from '../algos/npp.js'
 
   let algorithm = 'fcfs'
 
@@ -45,6 +46,7 @@
     if (algorithm === 'fcfs') result = solveFcfs(jobs)
     if (algorithm === 'sjf') result = solveSjf(jobs)
     if (algorithm === 'srtf') result = solveSrtf(jobs)
+    if (algorithm === 'npp') result = solveNpp(jobs)
   }
 </script>
 
@@ -81,7 +83,7 @@
   </div>
 
   <div slot="controls">
-    <button on:click={() => addJob(modalJobName, modalArrivalTime, modalBurstTime)} class="modal-add button">Add</button>
+    <button on:click={() => addJob(modalJobName, modalArrivalTime, modalBurstTime, modalPriority)} class="modal-add button">Add</button>
   </div>
 </Modal>
 
@@ -99,42 +101,44 @@
       </select>
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Job</th>
-          <th>Arrival Time</th>
-          <th>Burst Time</th>
-          {#if algorithm === 'npp' || algorithm === 'pp'}
-            <th>Priority</th>
-          {/if}
-        </tr>
-      </thead>
-
-      <tbody>
-        {#if jobs.length <= 0}
+    <div style="overflow-x: scroll;">
+      <table class="table">
+        <thead>
           <tr>
-            <th>...</th>
-            <th>...</th>
-            <th>...</th>
+            <th>Job</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
             {#if algorithm === 'npp' || algorithm === 'pp'}
-              <th>...</th>
+              <th>Priority</th>
             {/if}
           </tr>
-        {:else}
-          {#each jobs as job}
+        </thead>
+
+        <tbody>
+          {#if jobs.length <= 0}
             <tr>
-              <th>{job.name}</th>
-              <th>{job.arrivalTime}</th>
-              <th>{job.burstTime}</th>
+              <th>...</th>
+              <th>...</th>
+              <th>...</th>
               {#if algorithm === 'npp' || algorithm === 'pp'}
-                <th>{job.priority}</th>
+                <th>...</th>
               {/if}
             </tr>
-          {/each}
-        {/if}
-      </tbody>
-    </table>
+          {:else}
+            {#each jobs as job}
+              <tr>
+                <th>{job.name}</th>
+                <th>{job.arrivalTime}</th>
+                <th>{job.burstTime}</th>
+                {#if algorithm === 'npp' || algorithm === 'pp'}
+                  <th>{job.priority}</th>
+                {/if}
+              </tr>
+            {/each}
+          {/if}
+        </tbody>
+      </table>
+    </div>
 
     <div class="controls">
       <button on:click={solve} class="solve button">Solve</button>
@@ -148,37 +152,39 @@
     {#if !result}
       <p style="color: #a6a6a6; font-size: 14px; margin: 1rem 0 0 0;">No result</p>
     {:else}
-      <table>
-        <thead>
-          <tr>
-            <th>Job</th>
-            <th>Arrival Time</th>
-            <th>Burst Time</th>
-            <th>Waiting Time</th>
-            <th>Turnaround Time</th>
-            <th>Finished Time</th>
-            {#if algorithm === 'npp' || algorithm === 'pp'}
-              <th>Priorities</th>
-            {/if}
-          </tr>
-        </thead>
-
-        <tbody>
-          {#each result.table as job}
+      <div style="overflow-x: scroll;">
+        <table>
+          <thead>
             <tr>
-              <th>{job.name}</th>
-              <th>{job.arrivalTime}</th>
-              <th>{job.burstTime}</th>
-              <th>{job.waitingTime}</th>
-              <th>{job.turnaroundTime}</th>
-              <th>{job.finishedTime}</th>
+              <th>Job</th>
+              <th>Arrival Time</th>
+              <th>Burst Time</th>
               {#if algorithm === 'npp' || algorithm === 'pp'}
-                <th>{job.priority}</th>
+                <th>Priority</th>
               {/if}
+              <th>Waiting Time</th>
+              <th>Turnaround Time</th>
+              <th>Finished Time</th>
             </tr>
-          {/each}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {#each result.table as job}
+              <tr>
+                <th>{job.name}</th>
+                <th>{job.arrivalTime}</th>
+                <th>{job.burstTime}</th>
+                {#if algorithm === 'npp' || algorithm === 'pp'}
+                  <th>{job.priority}</th>
+                {/if}
+                <th>{job.waitingTime}</th>
+                <th>{job.turnaroundTime}</th>
+                <th>{job.finishedTime}</th>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
     {/if}
   </div>
 </main>

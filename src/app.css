@@ -10,6 +10,7 @@ table {
   margin-top: 2rem;
   width: 100%;
   border-collapse: collapse;
+  overflow-x: hidden;
 }
 
 thead {
