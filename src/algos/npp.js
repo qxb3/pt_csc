@@ -15,9 +15,6 @@ export function solveNpp(jobs) {
   const readyQueue = []
   const finishedJobs = []
 
-  let avgWaitingTime = 0
-  let avgTurnaroundTime = 0
-
   for (let i = 0; i < processesInfo.length; i++) {
     if (i === 0) {
       readyQueue.push(processesInfo[0])
@@ -125,5 +122,8 @@ export function solveNpp(jobs) {
     return 0
   })
 
-  return { gant, table }
+  let avgWaitingTime = (table.reduce((acc, curr) => acc + curr.waitingTime, 0) / table.length).toFixed(3)
+  let avgTurnaroundTime = (table.reduce((acc, curr) => acc + curr.turnaroundTime, 0) / table.length).toFixed(3)
+
+  return { gant, table, avgWaitingTime, avgTurnaroundTime }
 }

@@ -4,6 +4,7 @@
   import { solveSjf } from '../algos/sjf.js'
   import { solveSrtf } from '../algos/srtf'
   import { solveNpp } from '../algos/npp.js'
+  import { solvePp } from '../algos/pp.js'
 
   let algorithm = 'fcfs'
 
@@ -47,6 +48,7 @@
     if (algorithm === 'sjf') result = solveSjf(jobs)
     if (algorithm === 'srtf') result = solveSrtf(jobs)
     if (algorithm === 'npp') result = solveNpp(jobs)
+    if (algorithm === 'pp') result = solvePp(jobs)
   }
 </script>
 
