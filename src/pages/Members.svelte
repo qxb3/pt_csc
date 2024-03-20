@@ -9,11 +9,11 @@
   <h1 class="title" style="margin-top: 2rem;">Cantoonteros</h1>
 
   <div class="members">
-    <li>Adam Nuevo</li>
+    <li>Franc Alcaide<li>
+    <li>John Lou Wyn Aparis (King Louis)<li>
     <li>Angelo Gabriel</li>
-    <li>Franc Alcaide</li>
-    <li>John Lou Wyn Aparis</li>
-    <li>Lord Vincent Torio</li>
+    <li>Adam Nuevo</li>
+    <li>Lord Vincent Torio (Sapilot)</li>
   </div>
 </main>
 
