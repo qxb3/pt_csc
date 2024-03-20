@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+}
+
+input {
+  width: 95%;
+}
+
+table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+table th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  margin: 0;
+}
